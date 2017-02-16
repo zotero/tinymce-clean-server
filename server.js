@@ -12,9 +12,18 @@ if (process.env.TINYMCE_CLEAN_LOG) {
 }
 
 app.use(function* (next) {
+	var d = new Date();
 	if (this.request.method == 'POST'
 			&& this.request.headers['content-type'] == 'text/plain') {
-		this.body = utils.process(this.request.body);
+		let body = utils.process(this.request.body);
+		let suffix = ` in ${new Date() - d} ms`;
+		if (body != this.request.body) {
+			console.log("Note cleaned" + suffix);
+		}
+		else {
+			console.log("Note unchanged" + suffix);
+		}
+		this.body = body;
 		return;
 	}
 	this.status = 400;
