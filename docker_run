@@ -34,7 +34,11 @@ else
 	FLAGS="--init"
 fi
 
-docker run $FLAGS -it --rm \
+if [ -t 0 ]; then
+	FLAGS="$FLAGS -t"
+fi
+
+docker run $FLAGS -i --rm \
 	--name tinymce-clean-server \
 	-v "$DIR":/usr/src/app \
 	-w /usr/src/app \
