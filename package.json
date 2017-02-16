@@ -10,6 +10,8 @@
   "license": "AGPL",
   "dependencies": {
     "koa": "^1.2.4",
+    "koa-body": "^1.6.0",
+    "koa-logger2": "0.0.1",
     "tinymce.html": "4.5.2"
   },
   "devDependencies": {
