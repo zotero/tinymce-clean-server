@@ -28,7 +28,13 @@ while getopts "b:p:h" opt; do
 	shift $((OPTIND-1)); OPTIND=1
 done
 
-docker run -it --init --rm \
+if [[ "$(docker --version | cut -d' ' -f3)" < "1.13" ]]; then
+	FLAGS=""
+else
+	FLAGS="--init"
+fi
+
+docker run $FLAGS -it --rm \
 	--name tinymce-clean-server \
 	-v "$DIR":/usr/src/app \
 	-w /usr/src/app \
