@@ -5,6 +5,9 @@ var utils = require('./lib/utils');
 var app = koa();
 
 app.use(koaBody({
+	multipart: false,
+	urlencoded: false,
+	json: false,
 	textLimit: 250000
 }));
 
