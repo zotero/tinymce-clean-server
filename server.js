@@ -4,7 +4,9 @@ var logger = require('koa-logger2');
 var utils = require('./lib/utils');
 var app = koa();
 
-app.use(koaBody());
+app.use(koaBody({
+	textLimit: 250000
+}));
 
 if (process.env.TINYMCE_CLEAN_LOG) {
 	var log_middleware = logger('ip [day/month/year:time zone] "method url protocol/httpVer" status size "referer" "userAgent" duration ms custom[unpacked]');
