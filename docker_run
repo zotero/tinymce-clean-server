@@ -43,7 +43,7 @@ docker run $FLAGS -i --rm \
 	-v "$DIR":/usr/src/app \
 	-w /usr/src/app \
 	-u node \
-	-m "100M" --memory-swap "300M" \
+	-m "200M" --memory-swap "400M" \
 	-e "TINYMCE_CLEAN_PORT=$BIND_PORT" \
 	-p $BIND_ADDR:$BIND_PORT:$BIND_PORT \
 	node:7-alpine \
